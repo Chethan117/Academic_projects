@@ -1,7 +1,0 @@
-I wanted to provide a summary of this week, which also marks the end of the month.
-
-Firstly, we had a two-day festival and a fun day last Thursday. It was a great time getting to know colleagues from different teams and understanding more about the organisation’s functioning and leadership through various talks. The 'Traitor Sabotage' game was a highlight and offered key takeaways on teamwork and strategy.
-
-Despite the non-working days and taking one day off, I am pleased to report that I achieved my monthly targets. However, I did encounter some challenges. Specifically, there was an external dependency on one dataset that I could not address due to limited bandwidth. While I am happy that my overall performance has improved compared to the previous month, I must acknowledge that I failed to deliver on one of the consolidations because of this dependency.
-
-Going forward, I believe we need to adopt a more strategic approach to manage such dependencies effectively. The Wednesday sessions have been particularly helpful in streamlining processes like documentation, and I think they can play a crucial role in addressing these challenges.
