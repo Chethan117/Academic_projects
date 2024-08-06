@@ -1,1 +1,41 @@
+/* Determine if today is the third Monday of the current month */
+data _null_;
+    /* Get today's date and the first day of the current month */
+    today = today();
+    first_day_of_month = intnx('month', today, 0, 'B');
+    
+    /* Determine the day of the week for the first day of the month */
+    day_of_week = weekday(first_day_of_month);
+    
+    /* Calculate the date of the first Monday of the month */
+    first_monday = ifn(day_of_week = 2, first_day_of_month, first_day_of_month + (9 - day_of_week));
+    
+    /* Calculate the date of the third Monday of the month */
+    third_monday = first_monday + 14;
+    
+    /* Check if today is the third Monday */
+    if today = third_monday then call symput('send_email', 'YES');
+    else call symput('send_email', 'NO');
+run;
 
+%macro check_and_send_email();
+    %if &send_email = YES %then %do;
+        filename email email 'recipient@example.com'
+            subject="Monthly Report"
+            from="sender@example.com"
+            attach=("report.pdf" /* Include any attachments if needed */);
+
+        data _null_;
+            file email;
+            put "Dear Team,";
+            put;
+            put "Please find attached the monthly report.";
+            put;
+            put "Best regards,";
+            put "Your Name";
+        run;
+    %end;
+%mend check_and_send_email;
+
+/* Run the macro to check the condition and send the email if applicable */
+%check_and_send_email();
