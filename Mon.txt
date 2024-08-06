@@ -1,0 +1,45 @@
+data _null_;
+    /* Get the current date */
+    current_date = today();
+    
+    /* Extract the year and month from the current date */
+    year = year(current_date);
+    month = month(current_date);
+    
+    /* Calculate the first day of the current month */
+    first_day_of_month = mdy(month, 1, year);
+    
+    /* Find the day of the week for the first day of the month (1=Sunday, 2=Monday, ..., 7=Saturday) */
+    day_of_week = weekday(first_day_of_month);
+    
+    /* Calculate the second Tuesday of the month */
+    second_tuesday = first_day_of_month + (9 - day_of_week);
+
+    /* Adjust if the first day is after Tuesday */
+    if day_of_week > 3 then
+        second_tuesday = second_tuesday + 7;
+
+    /* Calculate the previous month */
+    previous_month = intnx('month', current_date, -1);
+    previous_month_name = put(previous_month, monname.);
+
+    /* Check if the current date is the second Tuesday of the month */
+    if current_date = second_tuesday then do;
+        /* Email settings */
+        email_to = "recipient@example.com";
+        email_subject = cats("Reminder: Second Tuesday of ", previous_month_name);
+        email_body = "Today is the second Tuesday of the month.";
+        
+        /* Send the email */
+        filename mymail email to=email_to
+                          subject=email_subject
+                          type="text/plain";
+        
+        data _null_;
+            file mymail;
+            put email_body;
+        run;
+        
+        filename mymail clear;
+    end;
+run;
