@@ -1,33 +1,26 @@
 # Script Decisions Documentation
 
-This document outlines the comprehensive script implementations from STAGE 5 to STAGE 13, detailing each stage's role in processing and evaluating the risk associated with changes of address made via phone calls. The operations focus on extracting and analyzing various data points to assign risk scores based on predefined criteria.
+Continuing from the detailed process stages outlined earlier, this section focuses on the final steps where the scores calculated from `STAGE 5` to `STAGE 13` are evaluated against predefined referral criteria. These steps are crucial for updating operational processes based on the results of the risk assessment.
 
-## Script Decisions
+## Final Evaluation and Update Process
 
 ### Script Details
 
-**STAGE 5 to STAGE 13**:
-- **Objective:** These stages are designed to fetch and process data such as active account numbers, card numbers, and various status codes like security fraud status, closed reason, charge-off reason, and credit revoke status. The stages also determine the method of event based on various conditions including VRU call ID presence, operator IDs, and screen IDs, which help categorize events into mobile application usage, OAS interactions, back office activities, and automated updates.
+**Final Score Check and Referral Update**:
+- **Objective:** This step involves comparing the accumulated risk scores against the referral score criteria, which are predefined based on historical data and risk management policies. The comparison takes place within the context of specific start and end dates that define the period during which the referral criteria are applicable.
 
-- **Rationale:** The intricate logic applied across these stages aims to precisely categorize and evaluate each account's risk based on recent changes made through customer interactions. For example, if a VRU call ID is not null and specific operator and screen IDs match, the event is categorized under mobile applications; if VRU call ID is null and specific job descriptions match, it's categorized under back office activities. Additionally, conditions are checked to categorize events as automated updates or other types, based on operator IDs.
+- **Rationale:** The purpose of this comparison is to determine whether the scores associated with changes of address and other risk factors meet the thresholds that require further action, such as additional verification steps or flags for potential fraud. This step is vital for proactive risk management and ensuring the accuracy of customer data.
 
-- **Risk Scoring:**
-  - **Credit Limit Score:** Accounts are scored based on the credit limit:
-    - CL >= 4K: Score 5
-    - CL >= 2K: Score 3
-    - CL >= 1K: Score 1
-    - Below 1K: Score 0
-  - **Money Available Limit Score:**
-    - More than 3K: Score 5
-    - At least 2K: Score 3
-    - At least 1K: Score 1
-    - Below 1K: Score 0
-  - **Address Matching Score:**
-    - Outward postal codes from and to don’t match and area postal from and to don’t match: Score 5
-    - Outward from and to don’t match but area from and to matches: Score 1
+- **Operations:**
+  - **Score Comparison:** The scores calculated in the earlier stages are reviewed against the referral scores. This involves:
+    - Checking if the score meets or exceeds the thresholds set for referral.
+    - Applying these checks within the specified start and end dates to ensure the data is timely and relevant.
+  - **Criteria Update:** Based on the outcomes of the score comparisons, operational referral criteria may be updated. This includes:
+    - Adjusting thresholds to optimize risk detection.
+    - Modifying the referral process based on new insights and data trends observed from the scoring process.
 
-- **Requirement:** These detailed analyses and scoring mechanisms are crucial for assessing the risk associated with each change of address, helping identify potential fraud and ensuring the integrity of account information. The scores help in prioritizing follow-up actions and enhancing customer service strategies based on risk levels.
+- **Requirement:** Accurate and timely evaluation of scores against referral criteria is essential for maintaining the integrity and security of the operational processes. These checks ensure that all necessary actions are taken in response to potential risks, and that the referral criteria remain aligned with current risk landscapes and regulatory requirements.
 
 ---
 
-This section provides a thorough overview of the operations from STAGE 5 to STAGE 13, highlighting their importance in the broader context of risk management and customer interaction evaluation. Regular updates to this documentation are essential to reflect any changes in scripts or processing logic that may occur in the future.
+This documentation ensures that all stakeholders understand the importance of the final evaluation steps and their impact on operational referral criteria. It highlights the connection between detailed data analysis and practical application in risk management and operational adjustments. Regular updates to this documentation are recommended to reflect any changes in scoring algorithms, referral criteria, or operational requirements.
