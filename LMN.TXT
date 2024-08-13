@@ -1,6 +1,14 @@
+In the context of SIRA (Systematic Internal Risk Assessment), which is likely a system or tool used to evaluate credit applications, identifying and flagging cases that do not clear the credit policy is essential. This allows for:
 
-cript	Rationale	Requirement
-Create Base Phone Table	To establish a foundational dataset capturing recent phone number changes linked to potential account takeover scenarios.	Required to filter and record only those phone numbers associated with account takeovers where changes occurred within the last 7 days. This dataset will support further analysis and tracking.
-Populate IP Table	To transfer relevant data from the base phone table to the IP table, setting the stage for integration with event registration data.	Ensures that the IP table is populated with accurate and timely data for subsequent linkage and analysis of event-related details.
-Create ATO Registration Base Table	To identify and analyze new mobile app registrations that might be related to account takeover activities by correlating them with phone number changes.	Necessitates the creation of a dedicated table that combines event registration data with phone number changes to trace and flag suspicious activities effectively.
-Flag and Prepare Data for Agent Review	To finalize the preparation of data by flagging significant changes and potential fraud indicators for agent intervention.	Facilitates the operational readiness of agents to review and act upon entries that have been flagged as needing attention, based on potential risk indicators.
+Risk management: Identifying high-risk applications helps the company avoid potential losses.
+Regulatory compliance: Ensures that all applications adhere to regulatory standards.
+Operational efficiency: Automating the flagging process helps streamline the review of applications.
+
+The intent behind flagging these cases is to ensure that all applications that pose a potential risk are automatically identified for further review or rejection. By implementing this rule, the organization aims to:
+
+Prevent financial losses: By stopping high-risk credit approvals.
+Maintain credit quality: Ensuring that the credit portfolio remains healthy.
+Facilitate decision-making: Providing credit officers with quick insights into which applications need closer scrutiny.
+
+
+To achieve this, the method involves implementing a rule within the SIRA system that automatically flags any cases that do not meet the credit policy criteria. 
