@@ -1,14 +1,1 @@
-In the context of SIRA (Systematic Internal Risk Assessment), which is likely a system or tool used to evaluate credit applications, identifying and flagging cases that do not clear the credit policy is essential. This allows for:
 
-Risk management: Identifying high-risk applications helps the company avoid potential losses.
-Regulatory compliance: Ensures that all applications adhere to regulatory standards.
-Operational efficiency: Automating the flagging process helps streamline the review of applications.
-
-The intent behind flagging these cases is to ensure that all applications that pose a potential risk are automatically identified for further review or rejection. By implementing this rule, the organization aims to:
-
-Prevent financial losses: By stopping high-risk credit approvals.
-Maintain credit quality: Ensuring that the credit portfolio remains healthy.
-Facilitate decision-making: Providing credit officers with quick insights into which applications need closer scrutiny.
-
-
-To achieve this, the method involves implementing a rule within the SIRA system that automatically flags any cases that do not meet the credit policy criteria. 
