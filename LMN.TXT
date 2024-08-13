@@ -1,1 +1,38 @@
+# Credit Policy Reporting Process
 
+## Overview
+This script processes credit policy data, identifies new applications, and updates reporting tables.
+
+## Method
+
+1. **Rule Hit Extraction**
+   - Create a table with distinct reference IDs where rule_code='xyz'
+
+2. **Recent Application Identification**
+   - Join rule_hit and account_snap tables
+   - Filter for applications opened within the last 14 days
+
+3. **New Application Detection**
+   - Left join with repo_dataset to identify new applications
+
+4. **Repo Table Update**
+   - Insert new applications into repo_table
+   - Include current date as report date
+
+5. **Daily Table Update**
+   - Insert data from repo_dataset into daily_table for the current date
+
+## Key Tables
+- rule_hit
+- account_snap
+- cleared_credit_policy
+- repo_dataset
+- repo_table
+- daily_table
+
+## Dependencies
+- SQL database access
+- Current date information
+
+## Output
+The script updates the repo_table with new applications and refreshes the daily_table for reporting purposes.
