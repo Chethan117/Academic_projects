@@ -1,0 +1,14 @@
+Process Steps
+
+Time Frame Selection: Filter for applications updated in the last 10 days
+Status Filtering: Select applications with status number 35 ("do not clear credit policy")
+Task List Verification: Exclude applications explicitly marked for manual review
+Secondary Check Exclusion: Ensure no secondary review indicators are present
+
+
+
+Identify potential anomalies in the SIRA auto-clearing process to ensure compliance with credit policy review procedures.
+Usage
+Run this query daily or as needed to monitor for any applications that may have bypassed manual credit policy review.
+Maintenance
+Regularly review and update the query criteria to align with any changes in credit policy or application status codes.
