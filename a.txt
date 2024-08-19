@@ -1,55 +1,37 @@
-<h3>Background:</h3>
-<p>This SQL script is designed to monitor and analyze credit card transactions for potential fraud, account management, and risk assessment purposes. The process involves extracting, transforming, and loading (ETL) data from various tables to identify transactions that could indicate fraudulent activity or unusual account behavior. The script ultimately flags certain accounts for further review or action based on predefined criteria.</p>
+Background:
 
-<h3>Intent:</h3>
-<p>The primary intent of this script is to:</p>
-<ul>
-  <li>Identify transactions over a specific date range for potential fraud.</li>
-  <li>Aggregate transaction data to assess account balances and their relation to credit limits.</li>
-  <li>Flag accounts with repetitive authorization requests within a short period, which may suggest fraudulent activity.</li>
-  <li>Route flagged transactions to appropriate processing queues for further investigation or action.</li>
-</ul>
+This SQL script is designed to monitor and analyze credit card transactions for potential fraud, account management, and risk assessment purposes. The process involves extracting, transforming, and loading (ETL) data from various tables to identify transactions that could indicate fraudulent activity or unusual account behavior. The script ultimately flags certain accounts for further review or action based on predefined criteria.
 
-<h3>Method:</h3>
-<ol>
-  <li><strong>Table Creation and Transaction Filtering (hits):</strong>
-    <ul>
-      <li>The script begins by creating a table named <code>hits</code>, which filters transactions from the <code>cardguardtable</code> based on the date of the authorization request.</li>
-      <li>If today is Monday, it includes transactions from the last 5 days; otherwise, it includes transactions from the last 3 days.</li>
-      <li>Additionally, only transactions older than 3 days are considered.</li>
-    </ul>
-  </li>
-  
-  <li><strong>Aggregate Payments (pmts_since):</strong>
-    <ul>
-      <li>The <code>pmts_since</code> table is created by joining <code>hits</code> with another table (<code>cardguardtable</code>) to calculate the total authorization amount for each account in the last 7 days.</li>
-      <li>This allows for a historical view of payments and the timing of authorization requests.</li>
-    </ul>
-  </li>
+Intent:
 
-  <li><strong>Account Balance Calculation (acct_balance):</strong>
-    <ul>
-      <li>The <code>acct_balance</code> table calculates key financial indicators, such as payment percentages over credit limits and account balances relative to credit limits.</li>
-      <li>It joins with <code>account_balance_history</code> to ensure the account is active and uses these metrics to assess financial health and potential risks.</li>
-    </ul>
-  </li>
+The primary intent of this script is to:
 
-  <li><strong>Repetitive Transaction Flagging (repat_flaggers):</strong>
-    <ul>
-      <li>This step identifies accounts with repetitive authorization requests within a 14-day window. Accounts with one or more such instances are flagged.</li>
-      <li>The result is a <code>repeat_flag_indicator</code>, which helps in detecting patterns of potentially fraudulent or suspicious activity.</li>
-    </ul>
-  </li>
+Identify transactions over a specific date range for potential fraud.
+Aggregate transaction data to assess account balances and their relation to credit limits.
+Flag accounts with repetitive authorization requests within a short period, which may suggest fraudulent activity.
+Route flagged transactions to appropriate processing queues for further investigation or action.
+Method:
 
-  <li><strong>Final Data Insertion:</strong>
-    <ul>
-      <li>Transactions flagged in the <code>repat_flaggers</code> table are inserted into two separate tables based on their queue numbers and merchant category codes:</li>
-      <ul>
-        <li>The <code>unified_payment_transfer_table</code> receives entries with a specific queue number (1456) and merchant category code (5678).</li>
-        <li>The <code>contactless_table</code> receives entries with a different queue number (6541).</li>
-      </ul>
-    </ul>
-  </li>
-</ol>
+Table Creation and Transaction Filtering (hits):
 
-<p>This structured approach ensures that transactions are thoroughly analyzed, and potential fraud is flagged for further investigation, enhancing the overall security and integrity of the payment processing system.</p>
+The script begins by creating a table named hits, which filters transactions from the cardguardtable based on the date of the authorization request.
+If today is Monday, it includes transactions from the last 5 days; otherwise, it includes transactions from the last 3 days.
+Additionally, only transactions older than 3 days are considered.
+Aggregate Payments (pmts_since):
+
+The pmts_since table is created by joining hits with another table (cardguardtable) to calculate the total authorization amount for each account in the last 7 days.
+This allows for a historical view of payments and the timing of authorization requests.
+Account Balance Calculation (acct_balance):
+
+The acct_balance table calculates key financial indicators, such as payment percentages over credit limits and account balances relative to credit limits.
+It joins with account_balance_history to ensure the account is active and uses these metrics to assess financial health and potential risks.
+Repetitive Transaction Flagging (repat_flaggers):
+
+This step identifies accounts with repetitive authorization requests within a 14-day window. Accounts with one or more such instances are flagged.
+The result is a repeat_flag_indicator, which helps in detecting patterns of potentially fraudulent or suspicious activity.
+Final Data Insertion:
+
+Transactions flagged in the repat_flaggers table are inserted into two separate tables based on their queue numbers and merchant category codes:
+The unified_payment_transfer_table receives entries with a specific queue number (1456) and merchant category code (5678).
+The contactless_table receives entries with a different queue number (6541).
+This structured approach ensures that transactions are thoroughly analyzed, and potential fraud is flagged for further investigation, enhancing the overall security and integrity of the payment processing system.
