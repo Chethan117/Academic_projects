@@ -1,0 +1,15 @@
+-- Assuming 'some_dataset' is the table name in Snowflake
+WITH unpivoted_data AS (
+    SELECT
+        id, -- Include other columns from the original table if needed
+        Merch_id
+    FROM
+        some_dataset
+    UNPIVOT (
+        Merch_id FOR card IN (card1, card2, card3, card4, card5)
+    )
+)
+SELECT
+    * -- Select all columns or specific columns as needed
+FROM
+    unpivoted_data;
