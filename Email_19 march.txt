@@ -1,0 +1,30 @@
+Dear [Recipient's Name],
+
+This report includes the entire population from June 2023 to March 11, 2025, based on the containment date of March 11. All cases within this period have been contained.
+
+Additionally, we have identified accounts that were not charged back and require remediation. The account statuses have been aggregated at the account level rather than the case level, as outlined below.
+
+As discussed in the last event meeting, we will continue to run this report manually until it goes live. The report extracts cases from the last seven days up to yesterday’s date.
+
+Please find the attached sheet for your reference.
+
+Best regards,
+[Your Name]
+[Your Position]
+[Your Contact Information]
+
+
+
+
+
+
+
+
+
+
+
+Search
+
+Reason
+
+ChatGPT can m
