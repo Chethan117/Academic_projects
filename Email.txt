@@ -1,0 +1,14 @@
+Subject: Updated Population in the Sheet
+
+Hi [Recipient's Name],
+
+The population in the sheet has been updated, including:
+
+Account Status Updates: Each case now has its latest account status (Open, Open DM, Closed, Closed RM, Deceased, Insolvent, Charged Off, Credit Revoked).
+
+Updated Accounts & Transactions: We have also mapped transactions and values to their respective status levels.
+
+
+Refined Open Accounts: As discussed, we further narrowed down open accounts across different transaction bands.
+
+This population has been dual controlled. Please let us know if you have any questions.
